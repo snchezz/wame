@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selección de País</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<select id="selectPais">
+  <option value="US">🇺🇸 Estados Unidos (+1)</option>
+  <option value="ES">🇪🇸 España (+34)</option>
+  <option value="GB">🇬🇧 Reino Unido (+44)</option>
+  <!-- Agrega más opciones de países según sea necesario -->
+</select>
+
+<script>
+$(document).ready(function(){
+  // Obtener la ubicación del usuario basada en la dirección IP
+  $.get("https://ipinfo.io", function(response) {
+    var countryCode = response.country; // Código de país del usuario
+    $("#selectPais").val(countryCode); // Seleccionar automáticamente el país del usuario
+  }, "jsonp");
+});
+</script>
+
+</body>
+</html>
